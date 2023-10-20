@@ -1,0 +1,200 @@
+<div class="add-modal-90 col-lg-3">
+    <form [formGroup]="addMeasurementForm" (ngSubmit)="onAddMeasurementSubmit()">
+      <div class="col-lg-12 my-3">
+        <input
+          type="text"
+          class="form-control"
+          id="inputNeck"
+          formControlName="addNeck"
+          placeholder="Neck"
+        />
+        <span
+          class="form-text form-text-error"
+          *ngIf="
+            !addMeasurementForm.get('addNeck').valid &&
+            addMeasurementForm.get('addNeck').touched
+          "
+        >
+          Neck circumference is invalid
+        </span>
+      </div>
+      <div class="col-lg-12 my-3">
+        <input
+          type="text"
+          class="form-control"
+          id="inputChest"
+          formControlName="addChest"
+          placeholder="Chest"
+        />
+        <span
+          class="form-text form-text-error"
+          *ngIf="
+            !addMeasurementForm.get('addChest').valid && addMeasurementForm.get('addChest').touched
+          "
+        >
+          Chest circumference are invalid
+        </span>
+      </div>
+      <div class="col-lg-12 my-3">
+        <input
+          type="text"
+          class="form-control"
+          id="inputRightArm"
+          formControlName="addRightArm"
+          placeholder="RightArm"
+        />
+        <span
+          class="form-text form-text-error"
+          *ngIf="!addMeasurementForm.get('addRightArm').valid && addMeasurementForm.get('addRightArm').touched"
+        >
+          Right arm circumference is invalid
+        </span>
+      </div>
+      <div class="col-lg-12 my-3">
+        <input
+          type="text"
+          class="form-control"
+          id="inputLeftArm"
+          formControlName="addLeftArm"
+          placeholder="LeftArm"
+        />
+        <span
+          class="form-text form-text-error"
+          *ngIf="!addMeasurementForm.get('addLeftArm').valid && addMeasurementForm.get('addLeftArm').touched"
+        >
+          Left arm circumference is invalid
+        </span>
+      </div>
+      <div class="col-lg-12 my-3">
+        <input
+          type="text"
+          class="form-control"
+          id="inputRightForearm"
+          formControlName="addRightForearm"
+          placeholder="RightForearm"
+        />
+        <span
+          class="form-text form-text-error"
+          *ngIf="!addMeasurementForm.get('addRightForearm').valid && addMeasurementForm.get('addRightForearm').touched"
+        >
+          Right Forearm circumference is invalid
+        </span>
+      </div>
+      <div class="col-lg-12 my-3">
+        <input
+          type="text"
+          class="form-control"
+          id="inputLeftForearm"
+          formControlName="addLeftForearm"
+          placeholder="LeftForearm"
+        />
+        <span
+          class="form-text form-text-error"
+          *ngIf="!addMeasurementForm.get('addLeftForearm').valid && addMeasurementForm.get('addLeftForearm').touched"
+        >
+          Left Forearm circumference is invalid
+        </span>
+      </div>
+      <div class="col-lg-12 my-3">
+        <input
+          type="text"
+          class="form-control"
+          id="inputWaist"
+          formControlName="addWaist"
+          placeholder="Waist"
+        />
+        <span
+          class="form-text form-text-error"
+          *ngIf="!addMeasurementForm.get('addWaist').valid && addMeasurementForm.get('addWaist').touched"
+        >
+          Waist circumference is invalid
+        </span>
+      </div>
+      <div class="col-lg-12 my-3">
+        <input
+          type="text"
+          class="form-control"
+          id="inputRightLeg"
+          formControlName="addRightLeg"
+          placeholder="RightLeg"
+        />
+        <span
+          class="form-text form-text-error"
+          *ngIf="!addMeasurementForm.get('addRightLeg').valid && addMeasurementForm.get('addRightLeg').touched"
+        >
+          Right Leg circumference is invalid
+        </span>
+      </div>
+      <div class="col-lg-12 my-3">
+        <input
+          type="text"
+          class="form-control"
+          id="inputLeftLeg"
+          formControlName="addLeftLeg"
+          placeholder="LeftLeg"
+        />
+        <span
+          class="form-text form-text-error"
+          *ngIf="!addMeasurementForm.get('addLeftLeg').valid && addMeasurementForm.get('addLeftLeg').touched"
+        >
+          Left Leg circumference is invalid
+        </span>
+      </div>
+      <div class="col-lg-12 my-3">
+        <input
+          type="text"
+          class="form-control"
+          id="inputRightCalf"
+          formControlName="addRightCalf"
+          placeholder="RightCalf"
+        />
+        <span
+          class="form-text form-text-error"
+          *ngIf="!addMeasurementForm.get('addRightCalf').valid && addMeasurementForm.get('addRightCalf').touched"
+        >
+          Right Calf circumference is invalid
+        </span>
+      </div>
+      <div class="col-lg-12 my-3">
+        <input
+          type="text"
+          class="form-control"
+          id="inputLeftCalf"
+          formControlName="addLeftCalf"
+          placeholder="LeftCalf"
+        />
+        <span
+          class="form-text form-text-error"
+          *ngIf="!addMeasurementForm.get('addLeftCalf').valid && addMeasurementForm.get('addLeftCalf').touched"
+        >
+          Left Calf circumference is invalid
+        </span>
+      </div>
+   
+
+
+      <div class="row my-3">
+        <div class="col-lg-12 d-flex justify-content-end">
+          <button
+            class="btn energizing-orange-bg me-3"
+            type="submit"
+            [disabled]="!addMeasurementForm.valid"
+          >
+            Submit
+          </button>
+          <button
+            class="btn deep-blue-bg"
+            type="button"
+            (click)="onAddMeasurementCancel()"
+          >
+            Cancel
+          </button>
+        </div>
+        <div class="col-lg-12 text-end">  
+            <span class="form-text-error" #invalidValues></span>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="backdrop"></div>
+  

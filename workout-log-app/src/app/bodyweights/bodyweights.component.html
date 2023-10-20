@@ -1,0 +1,53 @@
+<main>
+  <h2>Bodyweight</h2>
+  <h6 #noBodyweightsMessage class="mt-5"></h6>
+  <div class="col-lg-12 mt-3">
+    <div class="row">
+      <div class="col-lg-12 d-flex text-center flex-wrap">
+        <div class="col-lg-2 p-2 border-end border-top">
+          <h6>Current weight: {{ currentWeight | rounder }}kg</h6>
+        </div>
+        <div class="col-lg-2 p-2 border-top border-end">
+          <h6>Current bodyfat: {{ currentBodyfat | rounder }}%</h6>
+        </div>
+        <div class="col-lg-2 p-2 border-top border-end">
+          <h6>Goal weight: {{ goalWeight | rounder }}kg</h6>
+        </div>
+        <div class="col-lg-2 p-2 border-top border-end">
+          <h6>Goal bodyfat: {{ goalBodyfat | rounder }}%</h6>
+        </div>
+        <div class="col-lg-4 p-2">
+          <h5>Your current goal: {{ currentGoal }}</h5>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-between mt-5 border-top pt-3">
+      <div class="col-lg-4 mt-3">
+        <app-bodyweight-chart
+          [userWeights]="userWeights"
+          *ngIf="weightStatsVisible"
+        ></app-bodyweight-chart>
+      </div>
+      <div class="col-lg-3 mt-3">
+        <app-user-weights
+          [userWeightsFor5]="userWeightsFor5"
+          (refreshStatsEmitter)="refreshPage(userWeights.id)"
+          (emitBodyweight)="addBodyweightEmitterHandler()"
+          *ngIf="pageRendered"
+        ></app-user-weights>
+      </div>
+      <div class="col-lg-3 mt-3">
+        <app-user-average-stats
+          *ngIf="weightStatsVisible"
+          [userWeights]="userWeights"
+          (refreshGoal)="refreshGoal($event)"
+          (refreshStatsEmitter)="refreshPage(userWeights.id)"
+          (emitGoal)="addGoalEmitterHandler()"
+        ></app-user-average-stats>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="messageModalVisible">
+    <app-message-modal [messageModal]="modalMessage" ></app-message-modal>
+  </ng-container>
+</main>

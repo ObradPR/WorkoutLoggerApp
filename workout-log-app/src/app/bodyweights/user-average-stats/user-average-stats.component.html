@@ -1,0 +1,53 @@
+<div class="col-lg-12">
+  <h6>Your Stats</h6>
+  <div class="row">
+    <div class="col-lg-12 mt-3">
+        <h6>Your average weight for last 7 days: {{ averageFor7 }}kg</h6>
+    </div>
+    <div class="col-lg-12 mt-3">
+        <h6>Your average weight for last 30 days: {{ averageFor30 }}kg</h6>
+    </div>
+    <div class="col-lg-12 my-3">
+        <h6>Your average weight for last 365 days: {{ averageFor365 }}kg</h6>
+    </div>
+  </div>
+  <div class="row">
+    <form class="row g-2" [formGroup]="addGoalForm" (ngSubmit)="onSubmit()">
+      <div class="col-lg-6">
+        <input
+          type="text"
+          id="user-weight"
+          placeholder="Target bodyweight"
+          class="form-control"
+          formControlName="bodyweight"
+        />
+      </div>
+      <div class="col-lg-6">
+        <input
+          type="text"
+          id="user-bf"
+          placeholder="Target bodyfat"
+          class="form-control"
+          formControlName="bodyfat"
+        />
+      </div>
+      <div class="col-lg-6">
+        <select id="goal-type" formControlName="goalType" class="form-control">
+          <option value="0">Select your goal</option>
+          <option [value]="goal.id_goal_type" *ngFor="let goal of goalTypes">
+            {{ goal.goal_type_name }}
+          </option>
+        </select>
+      </div>
+      <div class="col-lg-6">
+        <button
+          class="btn deep-blue-bg float-end"
+          type="submit"
+          [disabled]="!addGoalForm.valid"
+        >
+          Add
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

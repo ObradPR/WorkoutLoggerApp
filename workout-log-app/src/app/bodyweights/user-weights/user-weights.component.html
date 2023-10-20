@@ -1,0 +1,47 @@
+<div class="col-lg-12">
+  <h6>Your last 5 logs</h6>
+  <div
+    class="d-flex justify-content-between border-bottom pt-3"
+    *ngFor="let obj of userWeightsFor5.weights"
+  >
+    <p>{{ obj.bodyweight_date | date : 'MMM d, y' }}</p>
+    <p>{{ obj.bodyweight | rounder }}kg</p>
+    <p>{{ obj.body_fat_percentage | rounder }}%</p>
+    <span
+      style="cursor: pointer"
+      (click)="onDeleteBodyweight(userId, obj.bodyweight_date)"
+      >&#10005;</span
+    >
+  </div>
+  <div class="row">
+    <form class="row g-2" [formGroup]="addWeightForm" (ngSubmit)="onSubmit()">
+      <div class="col-lg-6">
+        <input
+          type="text"
+          id="user-weight"
+          placeholder="Your weight"
+          class="form-control"
+          formControlName="bodyweight"
+        />
+      </div>
+      <div class="col-lg-6">
+        <input
+          type="text"
+          id="user-bf"
+          placeholder="Your bodyfat"
+          class="form-control"
+          formControlName="bodyfat"
+        />
+      </div>
+      <div class="col-12">
+        <button
+          class="btn deep-blue-bg float-end"
+          type="submit"
+          [disabled]="!addWeightForm.valid"
+        >
+          Add
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

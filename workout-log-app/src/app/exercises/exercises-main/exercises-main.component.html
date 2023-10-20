@@ -1,0 +1,78 @@
+<main>
+  <h2>Exercises</h2>
+  <div class="col-lg-11 mx-auto">
+    <div class="col-lg-7">
+      <form class="row">
+        <div class="col-lg-6 mt-3">
+          <select
+            class="form-control"
+            name="selMG"
+            [(ngModel)]="selectedMuscleGroup"
+            (change)="onMGChange()"
+          >
+            <option value="0">Select a muscle group</option>
+            <option
+              [value]="muscleGroup.id_muscle_group"
+              *ngFor="let muscleGroup of muscleGroups"
+            >
+              {{ muscleGroup.muscle_group_name }}
+            </option>
+          </select>
+        </div>
+        <div class="col-lg-6 mt-3">
+          <input
+            type="text"
+            placeholder="Search exercise"
+            class="form-control"
+            name="searchExercisesTxt"
+            [(ngModel)]="searchExercisesText"
+            (input)="filterExercisesByInput()"
+          />
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-12 mt-5">
+      <div class="row">
+        <div class="col-lg-5 px-4">
+          <h4>Select a exercise &#8593;</h4>
+          <div class="mt-3">
+            <div
+              class="row border mt-3 p-1"
+              style="cursor: pointer"
+              *ngFor="let exercise of filteredExercises"
+              (click)="onExerciseSelected(exercise.id_exercise)"
+            >
+              <div>
+                <h4>{{ exercise.exercise_name }}</h4>
+              </div>
+              <div>
+                <p>{{ exercise.exercise_description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7 px-2">
+          <h4>Your records for selected exercise</h4>
+          <div class="mt-3" *ngIf="recordsVisible">
+            <div class="col-lg-6 float-end">
+              <select
+                id="selTimeSpan"
+                class="form-control"
+                (change)="onChartTimespanChange($event.target.value)"
+              >
+                <option value="0">Select timespan</option>
+                <option value="7">Last 7 logs</option>
+                <option value="30">Last 30 logs</option>
+                <option value="365">Last 356 logs</option>
+              </select>
+            </div>
+            <br /><br />
+            <div class="chart-container">
+              <canvas id="MyChartExer">{{ chart }}</canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

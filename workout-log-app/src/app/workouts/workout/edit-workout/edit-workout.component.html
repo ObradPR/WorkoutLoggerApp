@@ -1,0 +1,108 @@
+<button
+  class="btn deep-blue-bg"
+  (click)="onEditWorkout()"
+  [disabled]="editMode"
+>
+  Edit
+</button>
+<div class="py-2" *ngIf="editMode">
+  <form [formGroup]="editWorkoutForm" (ngSubmit)="onEditWorkoutSubmit()">
+    <div class="row">
+      <div class="col-lg-3">
+        <label for="inputName66" class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputName66"
+          formControlName="editName"
+        />
+        <span
+          class="form-text form-text-error"
+          *ngIf="
+            !editWorkoutForm.get('editName').valid &&
+            editWorkoutForm.get('editName').touched
+          "
+        >
+          Name is invalid
+        </span>
+      </div>
+      <div class="col-lg-3">
+        <label for="inputDuration66" class="form-label"
+          >Duration - <b>in minutes</b></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="inputDuration66"
+          formControlName="editDuration"
+        />
+        <span
+          class="form-text form-text-error"
+          *ngIf="
+            !editWorkoutForm.get('editDuration').valid &&
+            editWorkoutForm.get('editDuration').touched
+          "
+        >
+          Duration is invalid
+        </span>
+      </div>
+      <div class="col-lg-3">
+        <label for="hour66" class="form-label"
+          >Starting Hour - <b>in 24h format</b></label
+        >
+        <input
+          type="text"
+          id="hour66"
+          class="form-control"
+          formControlName="editHours"
+        />
+        <span
+          class="form-text form-text-error"
+          *ngIf="
+            !editWorkoutForm.get('editHours').valid &&
+            editWorkoutForm.get('editHours').touched
+          "
+        >
+          Hour is invalid
+        </span>
+      </div>
+      <div class="col-lg-3">
+        <label for="minutes66" class="form-label">Starting Minutes</label>
+        <input
+          type="text"
+          id="minutes66"
+          class="form-control"
+          formControlName="editMinutes"
+        />
+        <span
+          class="form-text form-text-error"
+          *ngIf="
+            !editWorkoutForm.get('editMinutes').valid &&
+            editWorkoutForm.get('editMinutes').touched
+          "
+        >
+          Minutes are invalid
+        </span>
+      </div>
+    </div>
+    <div class="row my-3">
+      <div class="col-lg-12 d-flex justify-content-end">
+        <button
+          class="btn deep-blue-bg me-3"
+          type="submit"
+          [disabled]="!editWorkoutForm.valid"
+        >
+          Submit
+        </button>
+        <button
+          class="btn deep-blue-bg"
+          type="button"
+          (click)="onEditWorkoutCancel()"
+        >
+          Cancel
+        </button>
+      </div>
+      <span class="form-text" #editWorkoutMessage></span>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,12 @@
+#spanLogoText{
+    color: var(--energizing-orange);
+    font-weight: 700;
+}
+
+.navbar{
+    background-color: var(--deep-blue);
+}
+
+.nav-item{
+    margin: 0 0.2rem;
+}

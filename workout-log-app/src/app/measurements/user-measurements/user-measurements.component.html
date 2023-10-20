@@ -1,0 +1,16 @@
+<div class="col-lg-12">
+  <h6>Your last 7 log dates</h6>
+  <div
+    class="d-flex justify-content-between border-bottom pt-3"
+    *ngFor="let obj of last7Measurements.measurements"
+  >
+    <p>{{ obj.body_measurement_date | date : 'MMM d, y' }}</p>
+    <span
+      style="cursor: pointer"
+      (click)="
+        onDeleteMeasurement(last7Measurements.id, obj.body_measurement_date)
+      "
+      >&#10005;</span
+    >
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div *ngIf="userData">
+  <table class="table">
+    <thead class="deep-blue-bg">
+      <tr>
+        <th>Info</th>
+        <th>Stats</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Username</th>
+        <td>{{ userData.username }}</td>
+      </tr>
+      <tr>
+        <th>Bodyweight</th>
+        <td>{{ userData.user_bodyweight | rounder }}kg</td>
+      </tr>
+      <tr>
+        <th>Height</th>
+        <td>{{ userData.height }}cm</td>
+      </tr>
+      <tr>
+        <th>Bodyfat</th>
+        <td>{{ userData.bodyFat | rounder }}%</td>
+      </tr>
+      <tr>
+        <th>Current goal</th>
+        <td>{{ userData.goal_type_name }}</td>
+      </tr>
+      <tr>
+        <th>Workouts</th>
+        <td>{{ userData.workoutsCount }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

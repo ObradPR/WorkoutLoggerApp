@@ -1,0 +1,80 @@
+<div class="col-lg-10 col-xs-12 mx-auto">
+  <form [formGroup]="newWorkoutForm" (ngSubmit)="onNewWorkoutSubmit()">
+    <div class="row">
+      <div class="col-lg-4">
+        <label for="inputName" class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputName"
+          formControlName="name"
+        />
+        <span
+          class="form-text form-text-error"
+          *ngIf="
+            !newWorkoutForm.get('name').valid &&
+            newWorkoutForm.get('name').touched
+          "
+        >
+          Name is invalid
+        </span>
+      </div>
+      <div class="col-lg-4">
+        <label for="inputDuration" class="form-label"
+          >Duration - <b>in minutes</b></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="inputDuration"
+          formControlName="duration"
+        />
+        <span
+          class="form-text form-text-error"
+          *ngIf="
+            !newWorkoutForm.get('duration').valid &&
+            newWorkoutForm.get('duration').touched
+          "
+        >
+          Duration is invalid
+        </span>
+      </div>
+      <div class="col-lg-4">
+        <label for="workoutTime" class="form-label">Strating time</label>
+        <input
+          type="time"
+          id="workoutTime"
+          class="form-control"
+          formControlName="workoutStartTime"
+        />
+        <span
+          class="form-text form-text-error"
+          *ngIf="
+            !newWorkoutForm.get('workoutStartTime').valid &&
+            newWorkoutForm.get('workoutStartTime').touched
+          "
+        >
+          Time is invalid
+        </span>
+      </div>
+    </div>
+    <div class="row my-3">
+      <div class="col-lg-12 d-flex justify-content-end">
+        <button
+          class="btn deep-blue-bg me-3"
+          type="submit"
+          [disabled]="!newWorkoutForm.valid"
+        >
+          Add
+        </button>
+        <button
+          class="btn deep-blue-bg"
+          type="button"
+          (click)="onWorkoutCancel()"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

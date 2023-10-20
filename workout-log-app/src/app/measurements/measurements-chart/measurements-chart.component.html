@@ -1,0 +1,12 @@
+<div class="col-lg-6 float-end">
+    <select id="selTimeSpan" class="form-control" (change)="onChartTimespanChange($event.target.value)">
+        <option value="0">Select timespan</option>
+        <option value="7">Last 7 logs</option>
+        <option value="30">Last 30 logs</option>
+        <option value="365">Last 356 logs</option>
+    </select>
+</div>
+<br><br>
+<div class="chart-container">
+    <canvas id="MyChartMeasurements">{{ chart }}</canvas>
+</div>

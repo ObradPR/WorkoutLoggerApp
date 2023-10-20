@@ -1,0 +1,33 @@
+<form class="row g-3 mb-5" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="col-md-6">
+        <label for="inputEmail43" class="form-label">Email</label>
+        <input type="email" class="form-control" id="inputEmail43" formControlName="email"/>
+        <span class="form-text form-text-error"
+            *ngIf="!contactForm.get('email').valid && contactForm.get('email').touched">
+            Email is invalid
+        </span>
+    </div>
+    <div class="col-md-6 ">
+        <label for="inputTitle43" class="form-label">Title</label>
+        <input type="text" class="form-control" id="inputTitle43" formControlName="title"/>
+        <span class="form-text form-text-error"
+            *ngIf="!contactForm.get('title').valid && contactForm.get('title').touched">
+            Title is invalid
+        </span>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea43" class="form-label">Question</label>
+        <textarea class="form-control" id="exampleFormControlTextarea43" rows="3" formControlName="description"></textarea>
+        <span class="form-text form-text-error"
+            *ngIf="!contactForm.get('description').valid && contactForm.get('description').touched">
+            Description must not be empty
+        </span>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn deep-blue-bg"
+            [disabled]="!contactForm.valid">
+            Send
+        </button>
+    </div>
+    <span class="form-text" #contactMessage></span>
+</form>

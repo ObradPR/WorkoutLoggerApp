@@ -1,0 +1,14 @@
+<app-welcome-message></app-welcome-message>
+<ng-container *ngIf="idUser != 0">
+  <div
+    class="row col-xxl-9 col-xl-10 col-lg-11 col-md-8 col-sm-9 col-xs-12 mx-auto justify-content-between"
+  >
+    <div class="col-xxl-5 col-xl-5 col-lg-6 col-12 text-center">
+      <app-user-info></app-user-info>
+    </div>
+    <div class="col-xxl-5 col-xl-5 col-lg-6 col-12 text-center d-flex flex-column">
+      <app-log-buttons></app-log-buttons>
+      <app-advertisement></app-advertisement>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,44 @@
+footer {
+  background-color: var(--deep-blue);
+  color: var(--off-white);
+  margin-top: 5rem;
+  padding: 7rem 0;
+}
+
+footer a {
+  text-decoration: none;
+  color: var(--off-white);
+}
+
+footer ul li {
+  margin: 0 10px 0 0;
+  display: inline-block;
+}
+
+.footer-heading {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.8rem;
+}
+
+.footer-menu {
+  margin-bottom: 1.8rem;
+}
+
+.footer-menu a {
+  margin: 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+footer ul li a i:hover,
+.footer-menu a:hover,
+.footer-heading a:hover {
+  color: var(--energizing-orange);
+}
+
+@media (max-width: 430px) {
+  .footer-heading {
+    font-size: 1.2rem;
+  }
+}

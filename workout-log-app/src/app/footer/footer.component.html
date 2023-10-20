@@ -1,0 +1,47 @@
+<footer class="col-lg-12">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12 text-center">
+        <h2 class="footer-heading">
+          <a routerLink="/">WorkoutLogger.com</a>
+        </h2>
+        <p class="footer-menu d-flex justify-content-between flex-wrap">
+          <a routerLink="/">Home</a>
+          <ng-container *ngIf="idUser != 0">
+            <a routerLink="/workouts">Workouts</a>
+            <a routerLink="/exercises">Exercises</a>
+            <a routerLink="/bodyweights">Bodyweight</a>
+            <a routerLink="/measurements">Measurements</a>
+          </ng-container>
+          <a routerLink="/account">Contact</a>
+        </p>
+        <ul class="d-flex justify-content-center p-0">
+          <li>
+            <a href="https://twitter.com/"
+              ><i class="fa-brands fa-twitter fa-xl"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/"
+              ><i class="fa-brands fa-square-facebook fa-xl"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/"
+              ><i class="fa-brands fa-instagram fa-xl"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-12 text-center">
+        <p class="copyright">
+          Copyright &copy; {{ currentDate }} All rights reserved | This web app
+          is made with ♥ by
+          <span class="text-color-orange">Obrad Pualic-Radujko.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

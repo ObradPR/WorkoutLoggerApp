@@ -1,0 +1,114 @@
+<form class="row g-3" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="col-md-6">
+      <label for="inputUsername4" class="form-label">Username</label>
+      <input type="text" class="form-control" id="inputUsername4" formControlName="username"/>
+      <span class="form-text form-text-error"
+            *ngIf="!registerForm.get('username').valid && registerForm.get('username').touched">
+            Username is invalid
+      </span>
+    </div>
+    <div class="col-md-6 ">
+      <label for="inputPassword4" class="form-label">Password</label>
+      <div class="input-group">
+          <input type="password" class="form-control" id="inputPassword4" #passwordInput  formControlName="password"/>
+          <div class="input-group-text password-eye" (click)="onTogglePassword()"><i class="fa-solid fa-eye-slash" #eyeIcon></i></div>
+      </div>
+      <span class="form-text form-text-error"
+            *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched">
+            Password must contain at least 1 lowercase, 1 uppercase letter, 1 symbol, 1 digit and minimum 8 characters! 
+      </span>
+    </div>
+    <div class="col-12">
+      <label for="inputEmail4" class="form-label">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="workout.logger@gmail.com"  formControlName="email"/>
+      <span class="form-text form-text-error"
+            *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched">
+            Email is invalid
+      </span>
+    </div>
+    <label>Date of birth</label>
+    <div formGroupName="dateOfBirth" class="d-flex justify-content-between">
+      <div class="col-md-4">
+          <label for="monthDate">Month</label>
+          <select class="form-select" aria-label="Default select  example" id="monthDate"
+             formControlName="month"
+             (change)="updateDayValidity()">
+              <option value="0">Select your month</option>
+              <option *ngFor="let month of months; let i = index"  [value]="i + 1">{{ month }}</option>
+          </select>
+          
+          <span class="form-text form-text-error"
+            *ngIf="!registerForm.get('dateOfBirth.month').valid && registerForm.get('dateOfBirth.month').touched">
+            Month is invalid
+        </span>
+      </div>
+      <div class="col-md-3">
+          <label for="dayDate">Day</label>
+          <select class="form-select" aria-label="Default select  example" id="dayDate"
+             formControlName="day"
+             (change)="updateDayValidity()">
+              <option value="0">Select your day</option>
+              <option *ngFor="let day of days" [value]="day">{{ day }}</option>
+          </select>
+
+      </div>
+      <div class="col-md-4">
+          <label for="yearDate">Year</label>
+          <select class="form-select" aria-label="Default select  example" id="yearDate" formControlName="year">
+              <option value="0">Select your year</option>
+              <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+          </select>
+
+          <span class="form-text form-text-error"
+            *ngIf="!registerForm.get('dateOfBirth.year').valid && registerForm.get('dateOfBirth.year').touched">
+            Year is invalid
+        </span>
+      </div>
+    </div>
+    <span class="form-text form-text-error"
+      *ngIf="registerForm.get('dateOfBirth.day').invalid && registerForm.get('dateOfBirth.day').touched">
+      Invalid day for the selected month
+    </span>
+    <div class="col-md-4">
+      <label for="inputHeight" class="form-label">Height in cm</label>
+      <input type="text" class="form-control" id="inputHeight" formControlName="height" />
+      <span class="form-text form-text-error"
+            *ngIf="!registerForm.get('height').valid && registerForm.get('height').touched">
+            Height is invalid! Correct formats ~ (xxx.x, xxx)
+        </span>
+    </div>
+    <div class="col-md-4">
+        <label for="inputWeight" class="form-label">Weight in kg</label>
+        <input type="text" class="form-control" id="inputWeight" formControlName="weight" />
+        <span class="form-text form-text-error"
+            *ngIf="!registerForm.get('weight').valid && registerForm.get('weight').touched">
+            Weight is invalid! Correct formats ~ (xx.x, xx)
+        </span>
+    </div>
+    <div class="col-md-4">
+      <label for="inputGender" class="form-label">Gender</label>
+      <select id="inputGender" class="form-select" formControlName="gender">
+        <option value="0">Choose gender</option>
+        <option *ngFor="let gender of genders" value="{{ gender.id }}">{{ gender.name }}</option>
+      </select>
+      <span class="form-text form-text-error"
+            *ngIf="!registerForm.get('gender').valid && registerForm.get('gender').touched">
+            Gender is invalid
+        </span>
+    </div>
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="notification">
+        <label class="form-check-label" for="gridCheck">
+          Sign up for email notifications and receive news updates!
+        </label>
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn deep-blue-bg"
+        [disabled]="!registerForm.valid">
+        Sign up
+      </button>
+    </div>
+    <span class="form-text" #registerMessage></span>
+  </form>

@@ -1,0 +1,60 @@
+<div class="col-lg-11 mx-auto" *ngIf="workoutsLogged; else emptyWorkouts">
+  <div class="pb-5" *ngFor="let workout of workouts">
+    <div class="row">
+      <a
+        class="workout-title"
+        [routerLink]="['/workouts', workout.id_workout]"
+        (click)="onWorkoutClick(workout.id_workout)"
+      >
+        {{ workout.workout_name }} - {{ workout.workout_date }}
+      </a>
+    </div>
+    <div
+      class="row table-responsive"
+      *ngFor="let exercise of workout.exercises"
+    >
+      <h5>{{ exercise.exercise_name }}</h5>
+      <table class="table">
+        <thead class="deep-blue-bg">
+          <tr>
+            <th>Sets</th>
+            <th>Weight</th>
+            <th>Reps</th>
+            <th>RPE</th>
+            <th>Percentile</th>
+            <th>Volume</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let set of exercise.sets; let i = index">
+            <th>Set {{ i + 1 }}</th>
+            <td>
+              {{ set.weight | rounder }}
+              kg
+            </td>
+            <td>{{ set.reps }}</td>
+            <td>
+              <span class="rpe rpe{{ set.rpe }}">{{ set.rpe }}</span>
+            </td>
+            <td>{{ set.percentile }} %</td>
+            <td>
+              {{ set.volume | rounder }}
+              kg
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <hr />
+    <button
+      class="btn btn-danger float-end"
+      [id]="workout.id_workout"
+      (click)="onWorkoutRemove($event)"
+    >
+      Remove
+    </button>
+  </div>
+</div>
+<ng-template #emptyWorkouts>
+  <p>There are no workouts logged, log now.</p>
+</ng-template>

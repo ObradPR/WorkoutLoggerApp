@@ -1,0 +1,31 @@
+<main>
+  <h2>Measurements</h2>
+  <h6 #noMeasurementsMessage class="mt-5"></h6>
+  <div class="col-lg-12">
+    <div class="row justify-content-between mt-5 border-top pt-3">
+      <div class="col-lg-7 mt-3">
+        <app-measurements-chart
+          *ngIf="measurementsStatsVisible"
+        ></app-measurements-chart>
+      </div>
+      <div class="col-lg-5 mt-3">
+        <app-user-measurements
+          [last7Measurements]="last7Measurements"
+          (refreshStatsEmitter)="refreshPage(userMeasurements.id)"
+        ></app-user-measurements>
+      </div>
+    </div>
+
+    <div class="col-lg-3 mt-5">
+      <button class="btn deep-blue-bg" (click)="onAddMeasurement()">
+        Add Measurements
+      </button>
+    </div>
+    <ng-container *ngIf="addMeasureModal">
+      <app-add-measurement
+        (modalCancelEmitter)="closeModal($event)"
+        (addMeasurementRefreshEmitter)="refreshPage(userMeasurements.id)"
+      ></app-add-measurement>
+    </ng-container>
+  </div>
+</main>

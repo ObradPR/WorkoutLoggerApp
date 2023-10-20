@@ -1,0 +1,83 @@
+<div class="add-modal-60 col-lg-4">
+  <form [formGroup]="editSetForm" (ngSubmit)="onEditSetSubmit()">
+    <div class="col-lg-12">
+      <label for="inputWeight2" class="form-label">Weight</label>
+      <input
+        type="text"
+        class="form-control"
+        id="inputWeight2"
+        formControlName="editWeight"
+      />
+      <span
+        class="form-text form-text-error"
+        *ngIf="
+          !editSetForm.get('editWeight').valid &&
+          editSetForm.get('editWeight').touched
+        "
+      >
+        Weight is invalid
+      </span>
+    </div>
+    <div class="col-lg-12">
+      <label for="inputReps2" class="form-label">Reps</label>
+      <input
+        type="text"
+        class="form-control"
+        id="inputReps2"
+        formControlName="editReps"
+      />
+      <span
+        class="form-text form-text-error"
+        *ngIf="
+          !editSetForm.get('editReps').valid &&
+          editSetForm.get('editReps').touched
+        "
+      >
+        Reps are invalid
+      </span>
+    </div>
+    <div class="col-lg-12">
+      <label for="Rpe2" class="form-label">RPE</label>
+      <select id="Rpe2" class="form-control" formControlName="editRpe">
+        <option value="0">Select your RPE</option>
+        <option *ngFor="let rpe of rpes; let i = index" [value]="i + 1">
+          {{ rpe.key }} - {{ rpe.value }}
+        </option>
+      </select>
+      <span
+        class="form-text form-text-error"
+        *ngIf="
+          !editSetForm.get('editRpe').valid &&
+          editSetForm.get('editRpe').touched
+        "
+      >
+        RPE is invalid
+      </span>
+    </div>
+    <div class="row my-3">
+      <div class="col-lg-12 d-flex justify-content-end">
+        <button
+          class="btn energizing-orange-bg me-3"
+          type="submit"
+          [disabled]="!editSetForm.valid"
+        >
+          Submit
+        </button>
+        <button
+          class="btn deep-blue-bg"
+          type="button"
+          (click)="onEditSetCancel()"
+        >
+          Cancel
+        </button>
+      </div>
+      <span class="form-text" #editSetMessage></span>
+    </div>
+    <hr />
+    <hr />
+    <button class="btn btn-danger" type="button" (click)="onSetDelete()">
+      Delete
+    </button>
+  </form>
+</div>
+<div class="backdrop"></div>

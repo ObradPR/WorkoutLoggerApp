@@ -1,0 +1,18 @@
+<ng-container *ngIf="idUser == 0; else withId">
+  <div
+    class="col-xl-5 col-lg-6 col-md-7 col-sm-10 col-12 mx-auto text-center my-5"
+  >
+    <h5 class="text-color">Log in if you have a account, or create one!</h5>
+    <a routerLink="/account">Click here!</a>
+  </div>
+</ng-container>
+<ng-template #withId>
+  <div
+    class="col-xl-5 col-lg-6 col-md-7 col-sm-10 col-12 mx-auto text-center my-5"
+  >
+    <h5 class="text-color">
+      Welcome to WorkoutLogger, start logging your workouts.
+    </h5>
+    <a routerLink="/workouts">Click here!</a>
+  </div>
+</ng-template>

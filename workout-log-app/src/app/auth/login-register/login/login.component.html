@@ -1,0 +1,28 @@
+<form class="row g-3" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="col-md-6">
+    <label for="inputUsername42" class="form-label">Username</label>
+    <input type="text" class="form-control" id="inputUsername42" formControlName="username"/>
+    <span class="form-text form-text-error"
+            *ngIf="!loginForm.get('username').valid && loginForm.get('username').touched">
+            Username is invalid
+      </span>
+  </div>
+  <div class="col-md-6 ">
+    <label for="inputPassword42" class="form-label">Password</label>
+    <div class="input-group">
+        <input type="password" class="form-control" id="inputPassword42" #passwordInput formControlName="password" />
+        <div class="input-group-text password-eye" (click)="onTogglePassword()"><i class="fa-solid fa-eye-slash" #eyeIcon></i></div>
+    </div>
+    <span class="form-text form-text-error"
+            *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+            Password is invalid
+      </span>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn deep-blue-bg"
+      [disabled]="!loginForm.valid">
+      Log in
+    </button>
+  </div>
+  <span class="form-text" #loginMessage></span>
+</form>

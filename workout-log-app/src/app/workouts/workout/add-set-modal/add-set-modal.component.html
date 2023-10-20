@@ -1,0 +1,72 @@
+<div class="add-modal-45 col-lg-3">
+  <form [formGroup]="addSetForm" (ngSubmit)="onAddSetSubmit()">
+    <div class="col-lg-12">
+      <label for="inputWeight1" class="form-label">Weight</label>
+      <input
+        type="text"
+        class="form-control"
+        id="inputWeight1"
+        formControlName="addWeight"
+      />
+      <span
+        class="form-text form-text-error"
+        *ngIf="
+          !addSetForm.get('addWeight').valid &&
+          addSetForm.get('addWeight').touched
+        "
+      >
+        Weight is invalid
+      </span>
+    </div>
+    <div class="col-lg-12">
+      <label for="inputReps1" class="form-label">Reps</label>
+      <input
+        type="text"
+        class="form-control"
+        id="inputReps1"
+        formControlName="addReps"
+      />
+      <span
+        class="form-text form-text-error"
+        *ngIf="
+          !addSetForm.get('addReps').valid && addSetForm.get('addReps').touched
+        "
+      >
+        Reps are invalid
+      </span>
+    </div>
+    <div class="col-lg-12">
+      <label for="Rpe1" class="form-label">RPE</label>
+      <select id="Rpe1" class="form-control" formControlName="addRpe">
+        <option value="0">Select your RPE</option>
+        <option *ngFor="let rpe of rpes; let i = index" [value]="i+1">{{ rpe.key }} - {{ rpe.value }}</option>
+      </select>
+      <span
+        class="form-text form-text-error"
+        *ngIf="!addSetForm.get('addRpe').valid && addSetForm.get('addRpe').touched"
+      >
+        RPE is invalid
+      </span>
+    </div>
+    <div class="row my-3">
+      <div class="col-lg-12 d-flex justify-content-end">
+        <button
+          class="btn energizing-orange-bg me-3"
+          type="submit"
+          [disabled]="!addSetForm.valid"
+        >
+          Submit
+        </button>
+        <button
+          class="btn deep-blue-bg"
+          type="button"
+          (click)="onAddSetCancel()"
+        >
+          Cancel
+        </button>
+      </div>
+      <span class="form-text" #addSetMessage></span>
+    </div>
+  </form>
+</div>
+<div class="backdrop"></div>
